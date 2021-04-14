@@ -1,0 +1,45 @@
+.nav-bar {
+    height: 60px;
+    background-color: red;
+}
+
+.logo-frame-f {
+    position: absolute;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10%;
+    margin-top: 0.5%;
+}
+
+.logo-text-f {
+    font-family: Poppins;
+    font-size: 35px;
+    font-weight: 800;
+    text-align: center;
+    color: #eb2929;
+}
+
+.nav-bar .button {
+    margin-right: 3%!important;
+    height: 35px;
+    width: 150px;
+    color: white;
+}
+
+.cart-btn{
+    background-color: red ;
+    padding:15px;
+    color: white;
+}
+.nav-bar img {
+    width: 35px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.nav-bar .username {
+    color: white;
+    margin: 0 0 0 10px ;
+}

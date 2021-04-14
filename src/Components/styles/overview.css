@@ -1,0 +1,52 @@
+.topcontainer img {
+  height: 350px;
+  margin: 30px 0 30px 0;
+}
+
+.topcontainer p1 {
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 600;
+  color: #192f60;
+}
+
+.place-order p2{
+  color: white ; 
+  font-size: 18px ;
+  font-weight: 500 ; 
+  font-family: Poppins;
+}
+.place-order div{
+  background-color:red;
+   border-radius: 6px;
+}
+.about{
+  font-family: Poppins;
+  font-size: 20px;
+  padding: 15px 0 0 0;
+  font-weight: 600;
+  color: #192f60;
+}
+.head{
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: #192f60;
+  margin-top: 20px;
+}
+.value{
+  font-family: Poppins;
+  font-size: 14px;
+  color: #192f60;
+}
+.tab{
+  font-family: Poppins;
+  font-size: 14px;
+  color: #192f60;
+}
+.topcontainer p3 {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  color: #192f60;
+}

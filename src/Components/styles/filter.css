@@ -1,0 +1,172 @@
+
+.heading {
+    margin: 20px 0px 0px 130px;
+    font-family: Poppins;
+    font-size: 35px;
+    font-weight: bold;
+    color: #192f60;
+}
+
+.filter-options {
+    height: 600px;
+    width: 260px;
+    display: inline-block;
+    margin: 27px 20px 8px 140px;
+    padding: 17px 25px 31px 26px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+.filter-types {
+    margin-top: 20px;
+}
+
+.type-heading {
+    font-family: Poppins;
+    color: #192f60;
+}
+
+.type-options {
+    font-family: Poppins;
+    color: #8c96ab;
+    margin-top: 5px;
+}
+
+.check-box {
+    border-radius: 1.5px;
+    border: solid 1.5px #3a5075;
+}
+
+.fcontainer {
+    margin-left: 90px;
+    margin-top: 25px;
+    display: inline-block;
+    vertical-align: top;
+    height: 520px;
+    width: 800px;
+}
+
+.filtered-places {
+    margin-bottom: 25px;
+    width: 780px;
+    height: 240px;
+    box-shadow: 0 3px 6px 0
+}
+
+.img-details {
+    height: 120px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.details {
+    margin-top: 15px;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 20%;
+}
+
+.details-heading {
+    font-family: Poppins;
+    font-size: 27px;
+    font-weight: 600;
+    color: #192f60;
+    margin-left: 24px;
+    margin-top: 18px;
+}
+
+.details-type {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 28px;
+    color: #192f60;
+    margin-top: 3px;
+}
+
+.Adress {
+    color: #636f88;
+    margin-left: 28px;
+    font-family: Poppins;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.devider {
+    width: 740px;
+    margin: 20px 0 0 18px;
+    border: solid 1px #dedfe5;
+}
+
+.type-price {
+    height: 70px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.filtered-options {
+    font-family: Poppins;
+    margin-left: 22px;
+    margin-top: 12px;
+    line-height: 1.4;
+    color: #636f88;
+    display: inline-block;
+}
+
+.filtered-selected {
+    font-family: Poppins;
+    margin-left: 22px;
+    line-height: 1.4;
+    display: inline-block;
+    color: #192f60;
+}
+
+.page-numbers {
+    height: 30px;
+    width: 350px;
+    display: inline-block;
+    margin-left: 750px;
+}
+
+.number-frame {
+    border: solid 1px #8c96ab;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    border-radius: 7px;
+    text-align: center;
+    display: inline-block;
+}
+
+.num {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#filtershead {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 4px;
+    color: #192f60;
+}
+
+#selectloc {
+    border: solid 1px #8c96ab;
+    padding: 8px 16.7px 7px 15px;
+    border-radius: 3px;
+    margin-top: 5px;
+    width: 210px;
+}
+
+.locopt {
+    color: #8c96ab;
+}
