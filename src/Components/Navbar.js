@@ -478,7 +478,7 @@ class Navbar extends React.Component {
                 <div>
                     <div className="fa fa-times" style={{ float: 'right' }} onClick={() => this.handleModal("loginModalIsOpen", false)}></div>
                     <h1 className="m-4"> Login To Zomato-clone</h1>
-                    <div className="container">
+                    {/* <div className="container">
                         <label for="uname"><b>Username : </b></label>
                         <input type="text" placeholder="Enter Username" name="uname" required onInput={(event) => this.setState({ username: event.target.value })} />
                         <br />
@@ -490,7 +490,7 @@ class Navbar extends React.Component {
                             </label>  <span className="psw">Forgot <a href="#">password?</a></span><br />
                         <button className="btn btn-primary m-2" onClick={this.login}>Login</button>
                         <button className="m-2 btn btn-primary" onClick={() => this.handleModal("restLoginModalIsOpen", true)}>Restaurant Login</button>
-                    </div>
+                    </div> */}
                     <div className="m-2 mt-4 d-block">
                         <GoogleLogin
                             clientId="158628766092-dlodk8kjl565ois90tii1i7ufg2k5435.apps.googleusercontent.com"
@@ -521,7 +521,7 @@ class Navbar extends React.Component {
                 <div>
                     <div className="fa fa-times" style={{ float: 'right' }} onClick={() => this.handleModal('caModalIsOpen', false)}></div>
                     <h1 className="m-4"> Create Zomato-clone Account</h1>
-                    {/* <div className="container">
+                    <div className="container">
                         <label for="name"><b>Name : </b></label>
                         <input type="text" placeholder="Enter Name" name="name" required onInput={(event) => this.setState({ uname: event.target.value })} />
                         <br />
@@ -538,7 +538,7 @@ class Navbar extends React.Component {
                         <br />
                         <button className="btn btn-primary btn-block m-2" onClick={this.ca}>Create Account</button>
                     </div>
-                    <div className="m-2 mt-4 d-block">
+                    {/* <div className="m-2 mt-4 d-block">
                         <GoogleLogin
                             clientId="158628766092-dlodk8kjl565ois90tii1i7ufg2k5435.apps.googleusercontent.com"
                             buttonText="Login with Gmail"
