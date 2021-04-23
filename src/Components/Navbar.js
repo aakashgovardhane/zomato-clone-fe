@@ -500,7 +500,7 @@ class Navbar extends React.Component {
                             cookiePolicy={'single_host_origin'}
                         />
                     </div>
-                    {/* <div className="m-2">
+                    <div className="m-2">
                         <FacebookLogin
                             appId="1390882807953021"
                             textButton="Continue with Facebook"
@@ -510,7 +510,7 @@ class Navbar extends React.Component {
                             cssClass="btn-md fb"
                             icon="fa-facebook-square"
                         />
-                    </div> */}
+                    </div>
                 </div>
             </Modal>
             <Modal
@@ -538,7 +538,7 @@ class Navbar extends React.Component {
                         <br />
                         <button className="btn btn-primary btn-block m-2" onClick={this.ca}>Create Account</button>
                     </div>
-                    {/* <div className="m-2 mt-4 d-block">
+                    <div className="m-2 mt-4 d-block">
                         <GoogleLogin
                             clientId="158628766092-dlodk8kjl565ois90tii1i7ufg2k5435.apps.googleusercontent.com"
                             buttonText="Login with Gmail"
@@ -546,7 +546,7 @@ class Navbar extends React.Component {
                             onFailure={this.responseGoogle}
                             cookiePolicy={'single_host_origin'}
                         />
-                    </div> */}
+                    </div>
                     <div className="m-2">
                         <FacebookLogin
                             appId="1390882807953021"
