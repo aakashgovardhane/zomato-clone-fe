@@ -19,7 +19,7 @@ class Wallpaper extends React.Component {
         sessionStorage.setItem('locationId', locationId);
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/getrestaurantlist',
+            url: 'https://z-be.herokuapp.com/getrestaurantlist',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 city_name: locationId
@@ -41,7 +41,7 @@ class Wallpaper extends React.Component {
     componentDidMount(){
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/getrestaurantlist',
+            url: 'https://z-be.herokuapp.com/getrestaurantlist',
             headers: { 'Content-Type': 'application/json' },
             data: {
             }

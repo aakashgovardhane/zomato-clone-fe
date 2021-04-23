@@ -39,9 +39,9 @@ class Overview extends React.Component {
     placeOrder = (state, value) => {
         const { restaurant } = this.state;
         this.setState({ [state]: value, menuItems: [], subTotal: 0 })
-        if (state == 'orderModalIsOpen' && value == true) {
+        if (state === 'orderModalIsOpen' && value === true) {
             axios({
-                url: "http://localhost:2000/getItemsbyrestaurant",
+                url: "https://z-be.herokuapp.com/getItemsbyrestaurant",
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 data: { resId: restaurant._id }
@@ -56,7 +56,7 @@ class Overview extends React.Component {
         const items = [...this.state.menuItems];
         const item = items[index];
 
-        if (operationType == 'add') {
+        if (operationType === 'add') {
             item.qty = item.qty + 1;
         }
         else {
@@ -78,7 +78,7 @@ class Overview extends React.Component {
                     return item.qty > 0;
                 });
                 axios({
-                    url: "http://localhost:2000/getuser",
+                    url: "https://z-be.herokuapp.com/getuser",
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     data: {
@@ -86,7 +86,7 @@ class Overview extends React.Component {
                     }
                 }).then(
                     result => {
-                        if (result.data.user.cart.length == 0) {
+                        if (result.data.user.cart.length === 0) {
                             existCart = []
                         }else{
                             existCart = [...result.data.user.cart]
@@ -99,7 +99,7 @@ class Overview extends React.Component {
                     setTimeout(() => {
                         console.log(existCart)
                         axios({
-                            url: "http://localhost:2000/cart",
+                            url: "https://z-be.herokuapp.com/cart",
                             method: "POST",
                             headers: { 'Content-Type': 'application/json' },
                             data: {
@@ -127,7 +127,7 @@ class Overview extends React.Component {
         const { restID } = qs;
         axios({
             method: "POST",
-            url: "http://localhost:2000/getrestaurantbyid",
+            url: "https://z-be.herokuapp.com/getrestaurantbyid",
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -29,7 +29,7 @@ class Filter extends React.Component {
         const { mealtype, area } = qs;
 
         axios({
-            url: "http://localhost:2000/locations",
+            url: "https://z-be.herokuapp.com/locations",
             method: "GET",
             headers: { "Content-Type": "application/json" }
         }).then(res => this.setState({ "locations": res.data.locations }))
@@ -38,7 +38,7 @@ class Filter extends React.Component {
         // Call filter API 
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 mealtype: mealtype,
@@ -53,7 +53,7 @@ class Filter extends React.Component {
         const { mealtype, location, cuisine, lcost, hcost } = this.state;
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 sort: sort,
@@ -72,7 +72,7 @@ class Filter extends React.Component {
         const { mealtype, location, cuisine, sort } = this.state;
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 sort: sort,
@@ -89,22 +89,22 @@ class Filter extends React.Component {
 
     handleCuisineChange = (cuisineid) => {
         let { mealtype, location, cuisine, sort, lcost, hcost } = this.state;
-        if (cuisine == undefined) {
+        if (cuisine === undefined) {
             cuisine = [];
         }
-        if (cuisine.indexOf(cuisineid) == -1) {
+        if (cuisine.indexOf(cuisineid) === -1) {
             cuisine.push(cuisineid);
         }
         else {
             var index = cuisine.indexOf(cuisineid);
             cuisine.splice(index, 1);
         }
-        if (cuisine.length == 0) {
+        if (cuisine.length === 0) {
             cuisine = undefined;
         }
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 sort: sort,
@@ -122,12 +122,12 @@ class Filter extends React.Component {
     handleLocationChange = (event) => {
         const { mealtype, sort, cuisine, lcost, hcost } = this.state;
         let city = event.target.value;
-        if (city == -1) {
+        if (city === -1) {
             city = undefined
         }
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 sort: sort,
@@ -144,21 +144,21 @@ class Filter extends React.Component {
 
     handlePageChange = (page) => {
         const { mealtype, sort, cuisine, lcost, hcost, location } = this.state;
-        if (page == -1) {
+        if (page === -1) {
             page = this.state.page - 1;
-            if (page == 0) {
+            if (page === 0) {
                 page = 1
             }
         }
-        if (page == -2) {
+        if (page === -2) {
             page = this.state.page + 1;
-            if (page == this.state.totalpages.length + 1) {
+            if (page === this.state.totalpages.length + 1) {
                 page = this.state.page
             }
         }
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 sort: sort,
@@ -177,7 +177,7 @@ class Filter extends React.Component {
     clearFilters = () => {
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/filter',
+            url: 'https://z-be.herokuapp.com/filter',
             headers: { 'Content-Type': 'application/json' },
             data: {
             }
@@ -189,7 +189,7 @@ class Filter extends React.Component {
 
     render() {
         let { restaurants, locations, totalpages, page, sort, lcost, hcost, cuisine, location } = this.state;
-        if (cuisine == undefined) {
+        if (cuisine === undefined) {
             cuisine = []
         }
         return (
@@ -203,11 +203,11 @@ class Filter extends React.Component {
                     <div className="filter-types">
                         <div className="type-heading">Select Location</div>
                         <div className="type-options"><select id="selectloc" onChange={this.handleLocationChange}>
-                            {location == undefined ? <option style={{ "color": "black" }} className="locopt" value="-1">All Locations</option> : <option className="locopt" value="-1">All Locations</option>}
+                            {location === undefined ? <option style={{ "color": "black" }} className="locopt" value="-1">All Locations</option> : <option className="locopt" value="-1">All Locations</option>}
                             {
                                 locations.map(item => {
                                     return <>
-                                        {location == item.city ? <option selected style={{ "color": "black" }} className="locopt" value={item.city}>{item.city}</option> : <option className="locopt" value={item.city}>{item.city}</option>}
+                                        {location === item.city ? <option selected style={{ "color": "black" }} className="locopt" value={item.city}>{item.city}</option> : <option className="locopt" value={item.city}>{item.city}</option>}
                                     </>
 
                                 })
@@ -217,27 +217,27 @@ class Filter extends React.Component {
                     </div>
                     <div className="filter-types">
                         <div className="type-heading">Cuisine</div>
-                        {cuisine.indexOf(1) == -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(1) }} /> North Indian</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(1) }} /> North Indian</div>}
-                        {cuisine.indexOf(2) == -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(2) }} /> South Indian</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(2) }} /> South Indian</div>}
-                        {cuisine.indexOf(3) == -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(3) }} /> Chinese</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(3) }} /> Chinese</div>}
-                        {cuisine.indexOf(4) == -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(4) }} /> Fast Food</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(4) }} /> Fast Food</div>}
-                        {cuisine.indexOf(5) == -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(5) }} /> Street Food</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(5) }} /> Street Food</div>}
+                        {cuisine.indexOf(1) === -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(1) }} /> North Indian</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(1) }} /> North Indian</div>}
+                        {cuisine.indexOf(2) === -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(2) }} /> South Indian</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(2) }} /> South Indian</div>}
+                        {cuisine.indexOf(3) === -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(3) }} /> Chinese</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(3) }} /> Chinese</div>}
+                        {cuisine.indexOf(4) === -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(4) }} /> Fast Food</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(4) }} /> Fast Food</div>}
+                        {cuisine.indexOf(5) === -1 ? <div className="type-options"><input className="check-box" type="checkbox" onChange={() => { this.handleCuisineChange(5) }} /> Street Food</div> : <div style={{ "color": "black" }} className="type-options"><input className="check-box" type="checkbox" checked onChange={() => { this.handleCuisineChange(5) }} /> Street Food</div>}
                     </div>
                     <div className="filter-types">
                         <div className="type-heading">Cost For Two</div>
-                        {lcost == 1 && hcost == 500 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> Less Than &#8377;500</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(1, 500) }} /> Less Than &#8377;500</div>}
-                        {lcost == 500 && hcost == 1000 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> &#8377;500 to &#8377;1000</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(500, 1000) }} /> &#8377;500 to &#8377;1000</div>}
-                        {lcost == 1000 && hcost == 1500 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> &#8377;1000 to &#8377;1500</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(1000, 1500) }} /> &#8377;1000 to &#8377;1500</div>}
-                        {lcost == 1500 && hcost == 2000 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> &#8377;1500+</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(1500, 2000) }} /> &#8377;1500+</div>}
+                        {lcost === 1 && hcost === 500 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> Less Than &#8377;500</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(1, 500) }} /> Less Than &#8377;500</div>}
+                        {lcost === 500 && hcost === 1000 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> &#8377;500 to &#8377;1000</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(500, 1000) }} /> &#8377;500 to &#8377;1000</div>}
+                        {lcost === 1000 && hcost === 1500 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> &#8377;1000 to &#8377;1500</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(1000, 1500) }} /> &#8377;1000 to &#8377;1500</div>}
+                        {lcost === 1500 && hcost === 2000 ? <div className="type-options" style={{ "color": "black" }}><input name="cost" type="radio" checked onChange={() => { this.handleCostChange(1, 500) }} /> &#8377;1500+</div> : <div className="type-options"><input name="cost" type="radio" onChange={() => { this.handleCostChange(1500, 2000) }} /> &#8377;1500+</div>}
                     </div>
                     <div className="filter-types">
                         <div className="type-heading">Sort</div>
-                        {sort == 1 ? <div style={{ "color": "black" }} className="type-options"><input name="order" type="radio" checked="checked" onChange={() => { this.handleSortChange(1) }} /> Price low to high</div> : <div className="type-options"><input name="order" type="radio" onChange={() => { this.handleSortChange(1) }} /> Price low to high</div>}
-                        {sort == -1 ? <div style={{ "color": "black" }} className="type-options"><input name="order" type="radio" checked="checked" onChange={() => { this.handleSortChange(-1) }} /> Price High to Low</div> : <div className="type-options"><input name="order" type="radio" onChange={() => { this.handleSortChange(-1) }} /> Price High to Low</div>}
+                        {sort === 1 ? <div style={{ "color": "black" }} className="type-options"><input name="order" type="radio" checked="checked" onChange={() => { this.handleSortChange(1) }} /> Price low to high</div> : <div className="type-options"><input name="order" type="radio" onChange={() => { this.handleSortChange(1) }} /> Price low to high</div>}
+                        {sort === -1 ? <div style={{ "color": "black" }} className="type-options"><input name="order" type="radio" checked="checked" onChange={() => { this.handleSortChange(-1) }} /> Price High to Low</div> : <div className="type-options"><input name="order" type="radio" onChange={() => { this.handleSortChange(-1) }} /> Price High to Low</div>}
                     </div>
                 </div>
                 <div className="fcontainer">
-                    {restaurants.length != 0 ? restaurants.map((item) => {
+                    {restaurants.length !== 0 ? restaurants.map((item) => {
                         return <div className="filtered-places" onClick={() => { this.handleClick(item._id) }}>
                             <div className="img-details">
                                 <img className="img" src={item.thumb} />
@@ -261,12 +261,12 @@ class Filter extends React.Component {
                         </div>
                     }) : <div class="no-records"> No Records Found ... </div>}
                 </div>
-                {restaurants.length != 0 ? <div className="page-numbers text-align-center">
+                {restaurants.length !== 0 ? <div className="page-numbers text-align-center">
                     {totalpages.length > 1 ? <button className="number-frame" onClick={() => this.handlePageChange(-1)}>
                         <div className="num">&lt;</div>
                     </button> : null}
                     {totalpages.map(item => {
-                        return <>{page == item ? <button className="number-frame" onClick={() => this.handlePageChange(item)} style={{ "background-color": "#636f88" }}>
+                        return <>{page === item ? <button className="number-frame" onClick={() => this.handlePageChange(item)} style={{ "background-color": "#636f88" }}>
                             <div className="num" style={{ "color": "white" }}>{item}</div>
                         </button> : <button className="number-frame" onClick={() => this.handlePageChange(item)}>
                             <div className="num">{item}</div>

@@ -58,7 +58,7 @@ class Navbar extends React.Component {
 
     handleModal = (modalName, value) => {
         this.setState({ [modalName]: value });
-        if (modalName == "restLoginModalIsOpen" && value == true) {
+        if (modalName === "restLoginModalIsOpen" && value === true) {
             this.setState({ loginModalIsOpen: false })
         }
     }
@@ -69,7 +69,7 @@ class Navbar extends React.Component {
             console.log(response)
             axios({
                 method: 'POST',
-                url: 'http://localhost:2000/signup',
+                url: 'https://z-be.herokuapp.com/signup',
                 headers: { 'Content-Type': 'application/json' },
                 data: {
                     saveuser: {
@@ -91,7 +91,7 @@ class Navbar extends React.Component {
                 } else {
                     axios({
                         method: 'POST',
-                        url: 'http://localhost:2000/login',
+                        url: 'https://z-be.herokuapp.com/login',
                         headers: { 'Content-Type': 'application/json' },
                         data: {
                             user: { socialId: response.profileObj.googleId }
@@ -114,7 +114,7 @@ class Navbar extends React.Component {
         }
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/restLogin',
+            url: 'https://z-be.herokuapp.com/restLogin',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 restLogin: restLogin
@@ -148,7 +148,7 @@ class Navbar extends React.Component {
         }
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/login',
+            url: 'https://z-be.herokuapp.com/login',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 user: getuser
@@ -185,7 +185,7 @@ class Navbar extends React.Component {
             }
             axios({
                 method: 'POST',
-                url: 'http://localhost:2000/signup',
+                url: 'https://z-be.herokuapp.com/signup',
                 headers: { 'Content-Type': 'application/json' },
                 data: {
                     saveuser: {
@@ -215,7 +215,7 @@ class Navbar extends React.Component {
 
     handleLogout = (value) => {
         this.setState({ [value]: false, user: undefined,restName:undefined})
-        if(value=="isRestLogin")
+        if(value==="isRestLogin")
         {
             this.props.history.push('/')
         }
@@ -223,7 +223,6 @@ class Navbar extends React.Component {
     }
     ca = () => {
         const { uname, number, mail, username, password } = this.state;
-        console.log(this.state)
         const saveuser = {
             name: uname,
             number: number,
@@ -234,7 +233,7 @@ class Navbar extends React.Component {
         }
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/signup',
+            url: 'https://z-be.herokuapp.com/signup',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 saveuser: saveuser
@@ -253,13 +252,13 @@ class Navbar extends React.Component {
         })
     }
     cart = (state, value) => {
-        const { user, cart, subTotal } = this.state;
+        const { user } = this.state;
         this.setState({ [state]: value })
         let total = 0;
-        if (state == 'cartModalIsOpen' && value == true) {
+        if (state === 'cartModalIsOpen' && value === true) {
             this.setState({ cart: [] })
             axios({
-                url: "http://localhost:2000/getuser",
+                url: "https://z-be.herokuapp.com/getuser",
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 data: {
@@ -267,7 +266,7 @@ class Navbar extends React.Component {
                 }
             }).then(
                 result => {
-                    if (result.data.user.cart.length == 0) {
+                    if (result.data.user.cart.length === 0) {
                         this.setState({
                             cart: [],
                         })
@@ -279,7 +278,7 @@ class Navbar extends React.Component {
                     }
                 }
             )
-        } else if (state == 'formModalIsOpen' && value == true) {
+        } else if (state === 'formModalIsOpen' && value === true) {
             this.setState({ poname: user.name, pomail: user.mail, cartModalIsOpen: false })
 
         }
@@ -289,7 +288,7 @@ class Navbar extends React.Component {
         const items = [...this.state.cart];
         const item = items[index];
 
-        if (operationType == 'add') {
+        if (operationType === 'add') {
             item.qty = item.qty + 1;
         }
         else {
@@ -308,7 +307,7 @@ class Navbar extends React.Component {
                 return item.qty > 0;
             });
             axios({
-                url: "http://localhost:2000/cart",
+                url: "https://z-be.herokuapp.com/cart",
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 data: {
@@ -324,7 +323,7 @@ class Navbar extends React.Component {
             )
         } else {
             axios({
-                url: "http://localhost:2000/cart",
+                url: "https://z-be.herokuapp.com/cart",
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 data: {
@@ -385,7 +384,7 @@ class Navbar extends React.Component {
     }
 
     getData = (data) => {
-        return fetch(`http://localhost:2000/payment`, {
+        return fetch(`https://z-be.herokuapp.com/payment`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -399,7 +398,7 @@ class Navbar extends React.Component {
         const { subTotal, pomail, poname, poaddress, ponumber, cart,user } = this.state
         axios({
             method: 'POST',
-            url: 'http://localhost:2000/placeOrder',
+            url: 'https://z-be.herokuapp.com/placeOrder',
             headers: { 'Content-Type': 'application/json' },
             data: {
                 placedOrder: cart.map(item=>{return {
@@ -417,7 +416,7 @@ class Navbar extends React.Component {
             }
         }).then((res) => {
             axios({
-                url: "http://localhost:2000/cart",
+                url: "https://z-be.herokuapp.com/cart",
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 data: {
@@ -474,9 +473,10 @@ class Navbar extends React.Component {
             <Modal
                 isOpen={loginModalIsOpen}
                 style={customStyles}
+                ariaHideApp={false}
             >
                 <div>
-                    <div className="fa fa-times" aria-hidden="true" style={{ float: 'right' }} onClick={() => this.handleModal("loginModalIsOpen", false)}></div>
+                    <div className="fa fa-times" style={{ float: 'right' }} onClick={() => this.handleModal("loginModalIsOpen", false)}></div>
                     <h1 className="m-4"> Login To Zomato-clone</h1>
                     <div className="container">
                         <label for="uname"><b>Username : </b></label>
@@ -516,11 +516,12 @@ class Navbar extends React.Component {
             <Modal
                 isOpen={caModalIsOpen}
                 style={customStyles}
+                ariaHideApp={false}
             >
                 <div>
-                    <div className="fa fa-times" aria-hidden="true" style={{ float: 'right' }} onClick={() => this.handleModal('caModalIsOpen', false)}></div>
+                    <div className="fa fa-times" style={{ float: 'right' }} onClick={() => this.handleModal('caModalIsOpen', false)}></div>
                     <h1 className="m-4"> Create Zomato-clone Account</h1>
-                    <div className="container">
+                    {/* <div className="container">
                         <label for="name"><b>Name : </b></label>
                         <input type="text" placeholder="Enter Name" name="name" required onInput={(event) => this.setState({ uname: event.target.value })} />
                         <br />
@@ -556,7 +557,7 @@ class Navbar extends React.Component {
                             cssClass="btn-md fb"
                             icon="fa-facebook-square"
                         />
-                    </div>
+                    </div> */}
                 </div>
             </Modal>
             <Modal

@@ -17,14 +17,14 @@ class Home extends React.Component {
 
     componentDidMount() {
         axios({
-            url: "http://localhost:2000/locations",
+            url: "https://z-be.herokuapp.com/locations",
             method: "GET",
             headers: { "Content-Type": "application/json" }
         }).then(res => this.setState({ "locations": res.data.locations }))
             .catch(err => console.log(err))
 
         axios({
-            url: "http://localhost:2000/mealtypes",
+            url: "https://z-be.herokuapp.com/mealtypes",
             method: "GET",
             headers: { "Content-Type": "application/json" }
         }).then(res => this.setState({ "mealtypes": res.data.mealtypes }))

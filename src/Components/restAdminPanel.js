@@ -16,7 +16,7 @@ class restAdmin extends React.Component {
     orderComplete = (orderId) => {
         axios({
             method: "POST",
-            url: "http://localhost:2000/completeOrder",
+            url: "https://z-be.herokuapp.com/completeOrder",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -26,7 +26,7 @@ class restAdmin extends React.Component {
         }).then(res => {
             window.alert("Order Mark As Completed")
             axios({
-                url: "http://localhost:2000/getOrdersbyrestaurant",
+                url: "https://z-be.herokuapp.com/getOrdersbyrestaurant",
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 data: { resId: this.state.restaurant._id }
@@ -44,7 +44,7 @@ class restAdmin extends React.Component {
         const { restID } = qs;
         axios({
             method: "POST",
-            url: "http://localhost:2000/getrestaurantbyid",
+            url: "https://z-be.herokuapp.com/getrestaurantbyid",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -55,7 +55,7 @@ class restAdmin extends React.Component {
             this.setState({ restaurant: res.data.Restaurants })
         })
         axios({
-            url: "http://localhost:2000/getOrdersbyrestaurant",
+            url: "https://z-be.herokuapp.com/getOrdersbyrestaurant",
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             data: { resId: restID }
